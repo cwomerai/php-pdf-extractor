@@ -1,0 +1,276 @@
+{
+    "header": {
+        "participant_name": "Maryam Mary Khazraee",
+        "nabp_eprofile_id": "936070",
+        "cpe_activity_date_range": "01\/01\/2025 to 12\/31\/2025",
+        "total_cpe_hours_earned": 30.75,
+        "report_generated_at": "12\/5\/2025 1:37:47 PM (Coordinated Universal Time) \tPage 4 Of 4"
+    },
+    "activities": [
+        {
+            "activity_date": "6\/25\/2025",
+            "activity_number": "0669-0000-23-020-H03-P",
+            "credit_type": "ACPE",
+            "source": "ACPE",
+            "title": "Ethics in Pharmacy Practice",
+            "topic": "Law Related to Pharmacy Practice",
+            "provider": "RxCe.com LLC",
+            "live_hours": 0,
+            "home_hours": 1
+        },
+        {
+            "activity_date": "6\/25\/2025",
+            "activity_number": "0669-0000-24-121-H05-P",
+            "credit_type": "ACPE",
+            "source": "ACPE",
+            "title": "Medication Errors and Florida Reporting Rules",
+            "topic": "Patient Safety",
+            "provider": "RxCe.com LLC",
+            "live_hours": 0,
+            "home_hours": 2
+        },
+        {
+            "activity_date": "6\/25\/2025",
+            "activity_number": "0669-0000-24-127-H08-P",
+            "credit_type": "ACPE",
+            "source": "ACPE",
+            "title": "Validation and Counseling of Prescriptions for Controlled Substances and Opioids",
+            "topic": "Opioids\/Pain Management\/Substance Use Disorder",
+            "provider": "RxCe.com LLC",
+            "live_hours": 0,
+            "home_hours": 2
+        },
+        {
+            "activity_date": "3\/23\/2025",
+            "activity_number": "0290-0000-25-013-L08-P",
+            "credit_type": "ACPE",
+            "source": "ACPE",
+            "title": "Advancing Acute Pain Care: Breakthrough Non- Opioid Therapies and the Pharmacist's Critical Role",
+            "topic": "Opioids\/Pain Management\/Substance Use Disorder",
+            "provider": "Pharmacy Times Office of Continuing Professional Education",
+            "live_hours": 1.5,
+            "home_hours": 0
+        },
+        {
+            "activity_date": "3\/15\/2025",
+            "activity_number": "0290-0000-25-036-L99-P",
+            "credit_type": "ACPE",
+            "source": "ACPE",
+            "title": "Beyond the Prescription: Tackling Social Isolation for Better Health",
+            "topic": "Additional Topic Areas",
+            "provider": "Pharmacy Times Office of Continuing Professional Education",
+            "live_hours": 0.5,
+            "home_hours": 0
+        },
+        {
+            "activity_date": "3\/15\/2025",
+            "activity_number": "0290-0000-25-037-L01-P",
+            "credit_type": "ACPE",
+            "source": "ACPE",
+            "title": "Evaluating the Role of Pharmacists in Utilizing Potassium-Competitive Acid Blockers for Acid Peptic Disorders",
+            "topic": "Disease State Management\/Drug Therapy",
+            "provider": "Pharmacy Times Office of Continuing Professional Education",
+            "live_hours": 1,
+            "home_hours": 0
+        },
+        {
+            "activity_date": "3\/15\/2025",
+            "activity_number": "0290-0000-25-038-L03-P",
+            "credit_type": "ACPE",
+            "source": "ACPE",
+            "title": "Discipline Decoded: Navigating Pharmacy Law and Disciplinary Cases",
+            "topic": "Law Related to Pharmacy Practice",
+            "provider": "Pharmacy Times Office of Continuing Professional Education",
+            "live_hours": 1,
+            "home_hours": 0
+        },
+        {
+            "activity_date": "3\/15\/2025",
+            "activity_number": "0290-0000-25-040-L08-P",
+            "credit_type": "ACPE",
+            "source": "ACPE",
+            "title": "Balancing Pain Management and Opioid Use Disorder: Recognition, Treatment, and Compassionate Communication in Pharmacy Practice",
+            "topic": "Opioids\/Pain Management\/Substance Use Disorder",
+            "provider": "Pharmacy Times Office of Continuing Professional Education",
+            "live_hours": 1,
+            "home_hours": 0
+        },
+        {
+            "activity_date": "3\/15\/2025",
+            "activity_number": "0290-0000-25-041-L06-P",
+            "credit_type": "ACPE",
+            "source": "ACPE",
+            "title": "Empowering Pharmacists in Travel Medicine: Enhancing Patient Care Through Vaccination, Prevention, and Education",
+            "topic": "Immunizations",
+            "provider": "Pharmacy Times Office of Continuing Professional Education",
+            "live_hours": 2,
+            "home_hours": 0
+        },
+        {
+            "activity_date": "3\/15\/2025",
+            "activity_number": "0290-0000-25-042-L06-P",
+            "credit_type": "ACPE",
+            "source": "ACPE",
+            "title": "Respiratory Syncytial Virus Disease Prevention in Adults: The Pharmacists Role in Improving Vaccine Uptake",
+            "topic": "Immunizations",
+            "provider": "Pharmacy Times Office of Continuing Professional Education",
+            "live_hours": 1,
+            "home_hours": 0
+        },
+        {
+            "activity_date": "3\/15\/2025",
+            "activity_number": "0290-0000-25-043-L01-P",
+            "credit_type": "ACPE",
+            "source": "ACPE",
+            "title": "Understanding and Personalizing Chronic Obstructive Pulmonary Disease Diagnosis and Treatment",
+            "topic": "Disease State Management\/Drug Therapy",
+            "provider": "Pharmacy Times Office of Continuing Professional Education",
+            "live_hours": 1,
+            "home_hours": 0
+        },
+        {
+            "activity_date": "2\/17\/2025",
+            "activity_number": "JA0002895-0000-22-056- H04-P",
+            "credit_type": "IPCE",
+            "source": "ACPE",
+            "title": "Reporting and Public Viewing of Individual Case Safety Reports (ICSRs)",
+            "topic": "Pharmacy Administration",
+            "provider": "Food & Drug Administration - Center for Drug Evaluation & Research",
+            "live_hours": 0,
+            "home_hours": 1
+        },
+        {
+            "activity_date": "2\/17\/2025",
+            "activity_number": "JA0002895-0000-23-015- H01-P",
+            "credit_type": "IPCE",
+            "source": "ACPE",
+            "title": "Understanding Generic Narrow Therapeutic Index Drugs",
+            "topic": "Disease State Management\/Drug Therapy",
+            "provider": "Food & Drug Administration - Center for Drug Evaluation & Research",
+            "live_hours": 0,
+            "home_hours": 1
+        },
+        {
+            "activity_date": "2\/17\/2025",
+            "activity_number": "JA0002895-0000-23-025- H99-P",
+            "credit_type": "IPCE",
+            "source": "ACPE",
+            "title": "The Safety Evaluation and Surveillance of Generic Drugs",
+            "topic": "Additional Topic Areas",
+            "provider": "Food & Drug Administration - Center for Drug Evaluation & Research",
+            "live_hours": 0,
+            "home_hours": 1.5
+        },
+        {
+            "activity_date": "2\/17\/2025",
+            "activity_number": "JA0002895-0000-23-074- H01-P",
+            "credit_type": "IPCE",
+            "source": "ACPE",
+            "title": "Biosimilars: A Review of Scientific, Regulatory, and Clinical Considerations for Health Care Providers",
+            "topic": "Disease State Management\/Drug Therapy",
+            "provider": "Food & Drug Administration - Center for Drug Evaluation & Research",
+            "live_hours": 0,
+            "home_hours": 1
+        },
+        {
+            "activity_date": "2\/17\/2025",
+            "activity_number": "JA0002895-0000-23-092- H05-P",
+            "credit_type": "IPCE",
+            "source": "ACPE",
+            "title": "Naltrexone Injection for Opioid Use Disorder - FDAs Efforts to Reduce Medication Errors",
+            "topic": "Patient Safety",
+            "provider": "Food & Drug Administration - Center for Drug Evaluation & Research",
+            "live_hours": 0,
+            "home_hours": 1
+        },
+        {
+            "activity_date": "2\/17\/2025",
+            "activity_number": "JA0002895-0000-24-034- H99-P",
+            "credit_type": "IPCE",
+            "source": "ACPE",
+            "title": "Advancing Transparency and Regulatory Science Activities on the Risk Evaluation and Mitigation Strategy (REMS)",
+            "topic": "Additional Topic Areas",
+            "provider": "Food & Drug Administration - Center for Drug Evaluation & Research",
+            "live_hours": 0,
+            "home_hours": 1
+        },
+        {
+            "activity_date": "2\/17\/2025",
+            "activity_number": "JA0002895-0000-24-035- H99-P",
+            "credit_type": "IPCE",
+            "source": "ACPE",
+            "title": "An Overview of FDA s Project Facilitate Oncology Expanded Access Program",
+            "topic": "Additional Topic Areas",
+            "provider": "Food & Drug Administration - Center for Drug Evaluation & Research",
+            "live_hours": 0,
+            "home_hours": 1
+        },
+        {
+            "activity_date": "2\/17\/2025",
+            "activity_number": "JA0002895-0000-24-062- H99-P",
+            "credit_type": "IPCE",
+            "source": "ACPE",
+            "title": "FDA Rare Disease Day 2024: Clinical Trial Foundations and Future Directions",
+            "topic": "Additional Topic Areas",
+            "provider": "Food & Drug Administration - Center for Drug Evaluation & Research",
+            "live_hours": 0,
+            "home_hours": 1.75
+        },
+        {
+            "activity_date": "2\/17\/2025",
+            "activity_number": "JA0002895-0000-24-064- H99-P",
+            "credit_type": "IPCE",
+            "source": "ACPE",
+            "title": "FDA Rare Disease Day 2024: Navigating Information. Empowering Patients and Providers",
+            "topic": "Additional Topic Areas",
+            "provider": "Food & Drug Administration - Center for Drug Evaluation & Research",
+            "live_hours": 0,
+            "home_hours": 2
+        },
+        {
+            "activity_date": "2\/17\/2025",
+            "activity_number": "JA0002895-0000-24-065- H99-P",
+            "credit_type": "IPCE",
+            "source": "ACPE",
+            "title": "FDA Rare Disease Day 2024: FDA Initiatives",
+            "topic": "Additional Topic Areas",
+            "provider": "Food & Drug Administration - Center for Drug Evaluation & Research",
+            "live_hours": 0,
+            "home_hours": 1
+        },
+        {
+            "activity_date": "2\/17\/2025",
+            "activity_number": "JA0002895-0000-24-072- H01-P",
+            "credit_type": "IPCE",
+            "source": "ACPE",
+            "title": "Tips to Navigating Drug Interaction information in the US Prescribing Information",
+            "topic": "Disease State Management\/Drug Therapy",
+            "provider": "Food & Drug Administration - Center for Drug Evaluation & Research",
+            "live_hours": 0,
+            "home_hours": 1
+        },
+        {
+            "activity_date": "2\/17\/2025",
+            "activity_number": "JA0002895-0000-24-096- H99-P",
+            "credit_type": "IPCE",
+            "source": "ACPE",
+            "title": "Important Orange Book Facts",
+            "topic": "Additional Topic Areas",
+            "provider": "Food & Drug Administration - Center for Drug Evaluation & Research",
+            "live_hours": 0,
+            "home_hours": 1
+        },
+        {
+            "activity_date": "2\/17\/2025",
+            "activity_number": "JA0002895-0000-24-102- H99-P",
+            "credit_type": "IPCE",
+            "source": "ACPE",
+            "title": "The Bad Ad Program",
+            "topic": "Additional Topic Areas",
+            "provider": "Food & Drug Administration - Center for Drug Evaluation & Research",
+            "live_hours": 0,
+            "home_hours": 1
+        }
+    ],
+    "disclaimer": "The National Association of Boards of Pharmacy® (NABP®) generated this Activity Transcript (Transcript) or Compliance Report (Report) from NABP's systems. The Transcript or Report contains information provided to NABP from the Accreditation Council for Pharmacy Education (ACPE) and, if applicable, information from you, the non- ACPE course participant (Participant). The Transcript or Report can be used as proof of CPE credit for ACPE-accredited CPE. The ACPE provider is responsible for the accuracy of the ACPE course data and Participant is responsible for the accuracy of the non-ACPE course data on this Transcript or Report. Requests for changes to ACPE activity data must be directed to the ACPE-accredited provider that offered the activity. You are responsible for verifying that this Transcript or Report accurately reflects all continuing pharmacy education you participated in,  whether ACPE-accredited or not. CPE Monitor Plus is unable to track CPE hours or CPE completion for specialty licenses, including without limitation, pharmacist-in-charge and immunizer licenses; you are responsible for tracking CPE hours for specialty licenses. If there is a discrepancy between this Transcript or Report and the data contained in the NABP systems or your records, please contact the NABP CPE Monitor Team at cpemonitor@nabp.pharmacy . Boards of pharmacy, not NABP, determine CPE compliance . Participant attested that any non-ACPE course data submitted to NABP is true and correct, that Participant complied with the NABP Terms of Use, and accepts full responsibility for all information submitted to NABP and the accuracy of their Transcript or Report."
+}

@@ -1,0 +1,11 @@
+{
+    "name": "research/php-pdf",
+    "description": "CPE Monitor Activity Transcript PDF Parser",
+    "require": {
+        "php": ">=8.0",
+        "smalot/pdfparser": "^2.0"
+    },
+    "autoload": {
+        "files": []
+    }
+}

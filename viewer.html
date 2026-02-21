@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PDF Extract Viewer</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+      margin: 0;
+      padding: 1rem 2rem 2rem;
+      background: #f5f5f5;
+      color: #1a1a1a;
+    }
+    .toolbar {
+      position: sticky;
+      top: 0;
+      background: #fff;
+      padding: 0.75rem 0;
+      margin: 0 -2rem 2rem -2rem;
+      padding-left: 2rem;
+      padding-right: 2rem;
+      box-shadow: 0 1px 3px rgba(0,0,0,.08);
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .toolbar label, .toolbar button {
+      font-size: 0.9rem;
+    }
+    input[type="file"] { display: none; }
+    .btn {
+      padding: 0.5rem 1rem;
+      border: 1px solid #ccc;
+      background: #fff;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 0.9rem;
+    }
+    .btn:hover { background: #f0f0f0; }
+    .btn.primary { background: #2563eb; color: #fff; border-color: #2563eb; }
+    .btn.primary:hover { background: #1d4ed8; }
+    .drop-zone {
+      border: 2px dashed #ccc;
+      border-radius: 8px;
+      padding: 2rem;
+      text-align: center;
+      background: #fafafa;
+      color: #666;
+      margin-bottom: 1.5rem;
+    }
+    .drop-zone.dragover { border-color: #2563eb; background: #eff6ff; color: #1d4ed8; }
+    .drop-zone.hidden { display: none; }
+    .meta {
+      background: #fff;
+      padding: 1rem 1.25rem;
+      border-radius: 8px;
+      margin-bottom: 1.5rem;
+      font-size: 0.9rem;
+      color: #555;
+    }
+    .meta strong { color: #1a1a1a; }
+    .page {
+      background: #fff;
+      border-radius: 8px;
+      padding: 1.5rem 2rem;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 1px 3px rgba(0,0,0,.06);
+    }
+    .page-title { font-size: 0.85rem; color: #666; margin-bottom: 1rem; font-weight: 600; }
+    .block { margin-bottom: 1rem; }
+    .block:last-child { margin-bottom: 0; }
+    .paragraph { line-height: 1.5; white-space: pre-wrap; word-break: break-word; }
+    table.data-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+      margin: 0.5rem 0 1rem;
+    }
+    table.data-table th,
+    table.data-table td {
+      border: 1px solid #bbb;
+      padding: 0.5rem 0.6rem;
+      text-align: left;
+      vertical-align: top;
+      white-space: pre-wrap;
+      word-break: break-word;
+      font-weight: normal;
+    }
+    table.data-table th {
+      background: #e0e0e0;
+      font-weight: 600;
+      color: #1a1a1a;
+    }
+    table.data-table td:nth-child(1) { min-width: 5.5rem; }
+    table.data-table td:nth-child(2) { min-width: 11rem; }
+    table.data-table td:nth-child(8),
+    table.data-table td:nth-child(9) { min-width: 4rem; text-align: right; }
+    table.data-table th:nth-child(8),
+    table.data-table th:nth-child(9) { text-align: right; }
+    table.data-table tbody tr:nth-child(even) { background: #f9f9f9; }
+    table.data-table tbody tr:hover { background: #f0f4ff; }
+    .error { color: #b91c1c; background: #fef2f2; padding: 1rem; border-radius: 6px; margin: 1rem 0; }
+    .preview { color: #666; font-size: 0.85rem; }
+  </style>
+</head>
+<body>
+  <div class="toolbar">
+    <label for="fileInput" class="btn primary">Choose JSON file</label>
+    <input type="file" id="fileInput" accept=".json,application/json">
+    <span class="preview" id="preview">No file loaded. Select transcript.json or drop it here.</span>
+  </div>
+
+  <div class="drop-zone" id="dropZone">
+    Drop <strong>transcript.json</strong> here (or use the button above)
+  </div>
+
+  <div id="content"></div>
+
+  <script>
+    (function () {
+      const fileInput = document.getElementById('fileInput');
+      const dropZone = document.getElementById('dropZone');
+      const content = document.getElementById('content');
+      const preview = document.getElementById('preview');
+
+      var TABLE_HEADERS = [
+        'Activity Date',
+        'Activity #',
+        'Credit Type',
+        'Source',
+        'Title',
+        'Topic',
+        'Provider',
+        'Live Hours',
+        'Home Hours'
+      ];
+
+      function escapeHtml(s) {
+        if (s == null) return '';
+        const div = document.createElement('div');
+        div.textContent = String(s);
+        return div.innerHTML;
+      }
+
+      function render(data) {
+        if (!data) {
+          content.innerHTML = '<div class="error">Invalid JSON.</div>';
+          return;
+        }
+        // Transcript format: header + activities + disclaimer
+        if (data.header != null && Array.isArray(data.activities)) {
+          renderTranscript(data);
+          return;
+        }
+        content.innerHTML = '<div class="error">Invalid format: expected transcript.json with "header" and "activities".</div>';
+      }
+
+      function renderTranscript(data) {
+        var h = data.header || {};
+        var activities = data.activities || [];
+        var disclaimer = data.disclaimer;
+
+        var html = '';
+
+        html += '<div class="meta">';
+        html += '<strong>Participant:</strong> ' + escapeHtml(h.participant_name || '—') + ' &nbsp;|&nbsp; ';
+        html += '<strong>NABP e-Profile ID:</strong> ' + escapeHtml(h.nabp_eprofile_id || '—') + ' &nbsp;|&nbsp; ';
+        html += '<strong>CPE Date Range:</strong> ' + escapeHtml(h.cpe_activity_date_range || '—') + ' &nbsp;|&nbsp; ';
+        html += '<strong>Total CPE Hours:</strong> ' + escapeHtml(h.total_cpe_hours_earned != null ? h.total_cpe_hours_earned : '—');
+        if (h.report_generated_at) {
+          html += ' &nbsp;|&nbsp; <strong>Report generated:</strong> ' + escapeHtml(h.report_generated_at.replace(/\s*Page\s+\d+\s+Of\s+\d+.*$/i, '').trim());
+        }
+        html += '</div>';
+
+        html += '<div class="page">';
+        html += '<div class="page-title">Activities (' + activities.length + ')</div>';
+        html += '<table class="data-table"><thead><tr>';
+        TABLE_HEADERS.forEach(function (th) {
+          html += '<th>' + escapeHtml(th) + '</th>';
+        });
+        html += '</tr></thead><tbody>';
+
+        activities.forEach(function (a) {
+          html += '<tr>';
+          html += '<td>' + escapeHtml(a.activity_date) + '</td>';
+          html += '<td>' + escapeHtml(a.activity_number) + '</td>';
+          html += '<td>' + escapeHtml(a.credit_type) + '</td>';
+          html += '<td>' + escapeHtml(a.source) + '</td>';
+          html += '<td>' + escapeHtml(a.title) + '</td>';
+          html += '<td>' + escapeHtml(a.topic) + '</td>';
+          html += '<td>' + escapeHtml(a.provider) + '</td>';
+          html += '<td>' + escapeHtml(a.live_hours != null ? a.live_hours : '') + '</td>';
+          html += '<td>' + escapeHtml(a.home_hours != null ? a.home_hours : '') + '</td>';
+          html += '</tr>';
+        });
+
+        html += '</tbody></table></div>';
+
+        if (disclaimer) {
+          html += '<div class="meta" style="margin-top:1rem;"><strong>Disclaimer</strong><br><span style="font-size:0.85rem;">' + escapeHtml(disclaimer) + '</span></div>';
+        }
+
+        content.innerHTML = html;
+        dropZone.classList.add('hidden');
+      }
+
+      function loadJson(text) {
+        try {
+          const data = JSON.parse(text);
+          preview.textContent = (data.header && data.header.participant_name) ? 'Transcript: ' + data.header.participant_name : 'JSON loaded';
+          render(data);
+        } catch (e) {
+          content.innerHTML = '<div class="error">Invalid JSON: ' + escapeHtml(e.message) + '</div>';
+        }
+      }
+
+      function readFile(file) {
+        if (!file || file.type !== 'application/json') {
+          if (!file.name.toLowerCase().endsWith('.json')) {
+            content.innerHTML = '<div class="error">Please choose a .json file.</div>';
+            return;
+          }
+        }
+        const reader = new FileReader();
+        reader.onload = function () { loadJson(reader.result); };
+        reader.readAsText(file, 'UTF-8');
+      }
+
+      fileInput.addEventListener('change', function () {
+        const file = fileInput.files[0];
+        if (file) readFile(file);
+      });
+
+      dropZone.addEventListener('dragover', function (e) {
+        e.preventDefault();
+        dropZone.classList.add('dragover');
+      });
+      dropZone.addEventListener('dragleave', function () {
+        dropZone.classList.remove('dragover');
+      });
+      dropZone.addEventListener('drop', function (e) {
+        e.preventDefault();
+        dropZone.classList.remove('dragover');
+        const file = e.dataTransfer.files[0];
+        if (file) readFile(file);
+      });
+
+      // Optional: try to load transcript.json if same folder (works with file:// or local server)
+      fetch('transcript.json')
+        .then(function (r) { return r.ok ? r.text() : Promise.reject(); })
+        .then(loadJson)
+        .catch(function () {
+          preview.textContent = 'No file loaded. Select transcript.json or drop it here.';
+        });
+    })();
+  </script>
+</body>
+</html>
