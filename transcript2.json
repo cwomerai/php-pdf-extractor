@@ -1,0 +1,243 @@
+{
+    "header": {
+        "participant_name": null,
+        "nabp_eprofile_id": null,
+        "cpe_activity_date_range": "01\/01\/2025 to 12\/31\/2026",
+        "total_cpe_hours_earned": 29,
+        "report_generated_at": "1\/5\/2026 11:53:47 PM (Coordinated Universal Time) \tPage 4 Of 4"
+    },
+    "activities": [
+        {
+            "activity_date": "11\/3\/2025",
+            "activity_number": "JA4008164-0000-25-710- H01-P",
+            "credit_type": "IPCE",
+            "source": "ACPE",
+            "title": "Pharmacist's Letter CE-in-the-Letter October 2025",
+            "topic": "Disease State Management\/Drug Therapy",
+            "provider": "TRC Healthcare- NetCE",
+            "live_hours": 0,
+            "home_hours": 1
+        },
+        {
+            "activity_date": "10\/24\/2025",
+            "activity_number": "0130-9999-25-608-L08-P",
+            "credit_type": "ACPE",
+            "source": "ACPE",
+            "title": "The Bupe Blueprint: Navigating Initiation Strategies for OUD",
+            "topic": "Opioids\/Pain Management\/Substance Use Disorder",
+            "provider": "Washington State Pharmacy Association",
+            "live_hours": 1,
+            "home_hours": 0
+        },
+        {
+            "activity_date": "10\/17\/2025",
+            "activity_number": "0130-9999-25-607-L01-P",
+            "credit_type": "ACPE",
+            "source": "ACPE",
+            "title": "Unpacking the Evidence: Pharmacologic Therapies for MASLD",
+            "topic": "Disease State Management\/Drug Therapy",
+            "provider": "Washington State Pharmacy Association",
+            "live_hours": 1,
+            "home_hours": 0
+        },
+        {
+            "activity_date": "7\/14\/2025",
+            "activity_number": "JA4008164-0000-25-705- H01-P",
+            "credit_type": "IPCE",
+            "source": "ACPE",
+            "title": "Pharmacist's Letter CE-in-the-Letter May 2025",
+            "topic": "Disease State Management\/Drug Therapy",
+            "provider": "TRC Healthcare- NetCE",
+            "live_hours": 0,
+            "home_hours": 1
+        },
+        {
+            "activity_date": "7\/14\/2025",
+            "activity_number": "JA4008164-0000-25-706- H01-P",
+            "credit_type": "IPCE",
+            "source": "ACPE",
+            "title": "Pharmacist's Letter CE-in-the-Letter June 2025",
+            "topic": "Disease State Management\/Drug Therapy",
+            "provider": "TRC Healthcare- NetCE",
+            "live_hours": 0,
+            "home_hours": 1
+        },
+        {
+            "activity_date": "7\/14\/2025",
+            "activity_number": "JA4008164-0000-25-707- H01-P",
+            "credit_type": "IPCE",
+            "source": "ACPE",
+            "title": "Pharmacist's Letter CE-in-the-Letter July 2025",
+            "topic": "Disease State Management\/Drug Therapy",
+            "provider": "TRC Healthcare- NetCE",
+            "live_hours": 0,
+            "home_hours": 1
+        },
+        {
+            "activity_date": "5\/7\/2025",
+            "activity_number": "0130-9999-25-275-L01-P",
+            "credit_type": "ACPE",
+            "source": "ACPE",
+            "title": "High-Dose Steroids, Low-Dose Evidence for PPI Prophylaxis",
+            "topic": "Disease State Management\/Drug Therapy",
+            "provider": "Washington State Pharmacy Association",
+            "live_hours": 1,
+            "home_hours": 0
+        },
+        {
+            "activity_date": "4\/30\/2025",
+            "activity_number": "0130-9999-25-276-L03-P",
+            "credit_type": "ACPE",
+            "source": "ACPE",
+            "title": "Brand Name? How Generic Overview of a Drugs Lifespan",
+            "topic": "Law Related to Pharmacy Practice",
+            "provider": "Washington State Pharmacy Association",
+            "live_hours": 1,
+            "home_hours": 0
+        },
+        {
+            "activity_date": "4\/23\/2025",
+            "activity_number": "0130-9999-25-223-L01-P",
+            "credit_type": "ACPE",
+            "source": "ACPE",
+            "title": "Into the Weeds: Exploring the Therapeutic Uses of Medical Cannabis and Cannabinoids",
+            "topic": "Disease State Management\/Drug Therapy",
+            "provider": "Washington State Pharmacy Association",
+            "live_hours": 1,
+            "home_hours": 0
+        },
+        {
+            "activity_date": "4\/9\/2025",
+            "activity_number": "0130-9999-25-218-L04-P",
+            "credit_type": "ACPE",
+            "source": "ACPE",
+            "title": "Traditional Medicinals:? Handling Traditional and Natural Medicines as a Pharmacist in the Modern Era",
+            "topic": "Pharmacy Administration",
+            "provider": "Washington State Pharmacy Association",
+            "live_hours": 1,
+            "home_hours": 0
+        },
+        {
+            "activity_date": "3\/26\/2025",
+            "activity_number": "0130-9999-25-205-L01-P",
+            "credit_type": "ACPE",
+            "source": "ACPE",
+            "title": "The Tyrosine Takedown: Chronic Lymphocytic Leukemia",
+            "topic": "Disease State Management\/Drug Therapy",
+            "provider": "Washington State Pharmacy Association",
+            "live_hours": 1,
+            "home_hours": 0
+        },
+        {
+            "activity_date": "3\/21\/2025",
+            "activity_number": "0130-9999-25-163-L01-P",
+            "credit_type": "ACPE",
+            "source": "ACPE",
+            "title": "Blocking the Beta-Blockers",
+            "topic": "Disease State Management\/Drug Therapy",
+            "provider": "Washington State Pharmacy Association",
+            "live_hours": 1,
+            "home_hours": 0
+        },
+        {
+            "activity_date": "2\/26\/2025",
+            "activity_number": "0130-9999-25-143-L01-P",
+            "credit_type": "ACPE",
+            "source": "ACPE",
+            "title": "The Faces of Tardive Dyskinesia: A Comprehensive Overview",
+            "topic": "Disease State Management\/Drug Therapy",
+            "provider": "Washington State Pharmacy Association",
+            "live_hours": 1,
+            "home_hours": 0
+        },
+        {
+            "activity_date": "2\/12\/2025",
+            "activity_number": "0130-9999-25-066-L01-P",
+            "credit_type": "ACPE",
+            "source": "ACPE",
+            "title": "Cyto-Unseen: New drugs for the treatment of Cytomegalovirus",
+            "topic": "Disease State Management\/Drug Therapy",
+            "provider": "Washington State Pharmacy Association",
+            "live_hours": 1,
+            "home_hours": 0
+        },
+        {
+            "activity_date": "2\/5\/2025",
+            "activity_number": "0130-9999-25-031-L01-P",
+            "credit_type": "ACPE",
+            "source": "ACPE",
+            "title": "Management of Hemophilia A and B",
+            "topic": "Disease State Management\/Drug Therapy",
+            "provider": "Washington State Pharmacy Association",
+            "live_hours": 1,
+            "home_hours": 0
+        },
+        {
+            "activity_date": "1\/29\/2025",
+            "activity_number": "0130-9999-25-030-L01-P",
+            "credit_type": "ACPE",
+            "source": "ACPE",
+            "title": "Coagulation Conundrum: Anticoagulants and\/or Antiplatelets in Coronary Artery Disease and Atrial Fibrillation",
+            "topic": "Disease State Management\/Drug Therapy",
+            "provider": "Washington State Pharmacy Association",
+            "live_hours": 1,
+            "home_hours": 0
+        },
+        {
+            "activity_date": "1\/22\/2025",
+            "activity_number": "0130-9999-25-028-L01-P",
+            "credit_type": "ACPE",
+            "source": "ACPE",
+            "title": "Navigating Death with Dignity: A Guide to Dosing and Compassionate Care",
+            "topic": "Disease State Management\/Drug Therapy",
+            "provider": "Washington State Pharmacy Association",
+            "live_hours": 1,
+            "home_hours": 0
+        },
+        {
+            "activity_date": "1\/17\/2025",
+            "activity_number": "0130-9999-25-026-L01-P",
+            "credit_type": "ACPE",
+            "source": "ACPE",
+            "title": "Injecting Change: Evolution and Impact of Long- Acting Injectable Antipsychotics",
+            "topic": "Disease State Management\/Drug Therapy",
+            "provider": "Washington State Pharmacy Association",
+            "live_hours": 1,
+            "home_hours": 0
+        },
+        {
+            "activity_date": "1\/16\/2025",
+            "activity_number": "JA4008164-0000-24-3000 -H07-P",
+            "credit_type": "ACPE",
+            "source": "ACPE",
+            "title": "Hazardous Drug Overview (USP 795 and 797)",
+            "topic": "Compounding",
+            "provider": "TRC Healthcare- NetCE",
+            "live_hours": 0,
+            "home_hours": 1
+        },
+        {
+            "activity_date": "1\/16\/2025",
+            "activity_number": "JA4008164-0000-24-3007 -H07-P",
+            "credit_type": "ACPE",
+            "source": "ACPE",
+            "title": "Best Practices for Mixing Outside of ISO- Classified Conditions (USP 797)",
+            "topic": "Compounding",
+            "provider": "TRC Healthcare- NetCE",
+            "live_hours": 0,
+            "home_hours": 1
+        },
+        {
+            "activity_date": "1\/8\/2025",
+            "activity_number": "0130-9999-24-673-L01-P",
+            "credit_type": "ACPE",
+            "source": "ACPE",
+            "title": "From Doctrine to Dosage: A Pharmacists Guide to Faith-Friendly Care",
+            "topic": "Disease State Management\/Drug Therapy",
+            "provider": "Washington State Pharmacy Association",
+            "live_hours": 1,
+            "home_hours": 0
+        }
+    ],
+    "disclaimer": "The National Association of Boards of Pharmacy® (NABP®) generated this Activity Transcript (Transcript) or Compliance Report (Report) from NABP's systems. The Transcript or Report contains information provided to NABP from the Accreditation Council for Pharmacy Education (ACPE) and, if applicable, information from you, the non- ACPE course participant (Participant). The Transcript or Report can be used as proof of CPE credit for ACPE-accredited CPE. The ACPE provider is responsible for the accuracy of the ACPE course data and Participant is responsible for the accuracy of the non-ACPE course data on this Transcript or Report. Requests for changes to ACPE activity data must be directed to the ACPE-accredited provider that offered the activity. You are responsible for verifying that this Transcript or Report accurately reflects all continuing pharmacy education you participated in,  whether ACPE-accredited or not. CPE Monitor Plus is unable to track CPE hours or CPE completion for specialty licenses, including without limitation, pharmacist-in-charge and immunizer licenses; you are responsible for tracking CPE hours for specialty licenses. If there is a discrepancy between this Transcript or Report and the data contained in the NABP systems or your records, please contact the NABP CPE Monitor Team at cpemonitor@nabp.pharmacy . Boards of pharmacy, not NABP, determine CPE compliance . Participant attested that any non-ACPE course data submitted to NABP is true and correct, that Participant complied with the NABP Terms of Use, and accepts full responsibility for all information submitted to NABP and the accuracy of their Transcript or Report."
+}

@@ -96,6 +96,8 @@ class CpePdfParser
     }
 
     // ---- Header fields -------------------------------------------------------
+    // Designed to work with any CPE Monitor transcript layout: extract from header
+    // block when present, then apply full-document fallbacks for missing fields.
 
     private function extractHeader(string $text): array
     {
@@ -107,26 +109,21 @@ class CpePdfParser
             'report_generated_at'     => null,
         ];
 
-        // In this PDF layout, the header block is "CPE Monitor Activity Transcript" followed by
-        // labels, then values in order: total hours, date range, NABP ID, participant name.
+        // Optional header block: "CPE Monitor Activity Transcript" … until "Reported Generated"
         $block = null;
         if (preg_match('/CPE Monitor Activity Transcript\s*(.*?)(?=Reported?\s+Generated\s*@|$)/is', $text, $m)) {
             $block = trim($m[1]);
         }
         if ($block !== null && $block !== '') {
-            // Date range: MM/DD/YYYY to MM/DD/YYYY
             if (preg_match('/\b(\d{1,2}\/\d{1,2}\/\d{4}\s+to\s+\d{1,2}\/\d{1,2}\/\d{4})\b/', $block, $m)) {
                 $header['cpe_activity_date_range'] = trim($m[1]);
             }
-            // Total CPE hours: decimal number in this block (e.g. 30.75)
             if (preg_match('/\b(\d+\.\d{2})\b/', $block, $m)) {
                 $header['total_cpe_hours_earned'] = (float) $m[1];
             }
-            // NABP e-Profile ID: 6-digit number
             if (preg_match('/\b(\d{6})\b/', $block, $m)) {
                 $header['nabp_eprofile_id'] = $m[1];
             }
-            // Participant name: line that looks like "First Last" or "First Middle Last" (title case, not a label)
             $lines = preg_split('/\n+/', $block);
             foreach ($lines as $line) {
                 $line = trim($line);
@@ -134,16 +131,46 @@ class CpePdfParser
                     continue;
                 }
                 if (preg_match('/^\d|^\d+\/\d+|\.\d+/', $line)) {
-                    continue; // skip numbers and dates
+                    continue;
                 }
-                if (preg_match('/^[A-Z][a-z]+(?:\s+[A-Z][a-z]+){1,2}$/', $line)) {
+                if (preg_match('/^[A-Z][a-z]+(?:\s+[A-Z][a-z]+){1,3}$/', $line)) {
                     $header['participant_name'] = $line;
                     break;
                 }
             }
         }
 
-        // Report Generated At (last occurrence – last page footer)
+        // Full-document fallbacks (different PDFs put name/ID in different places)
+        if ($header['cpe_activity_date_range'] === null && preg_match('/\b(\d{1,2}\/\d{1,2}\/\d{4}\s+to\s+\d{1,2}\/\d{1,2}\/\d{4})\b/', $text, $m)) {
+            $header['cpe_activity_date_range'] = trim($m[1]);
+        }
+        if ($header['total_cpe_hours_earned'] === null && preg_match('/Recorded CPE activity[^.]*\.\s*(\d+\.\d{2})\b/', $text, $m)) {
+            $header['total_cpe_hours_earned'] = (float) $m[1];
+        }
+        if ($header['nabp_eprofile_id'] === null && preg_match('/\b(\d{6})\b/', $text, $m)) {
+            $header['nabp_eprofile_id'] = $m[1];
+        }
+        if ($header['participant_name'] === null) {
+            $lines = preg_split('/\n+/', $text);
+            $afterParticipant = false;
+            foreach ($lines as $line) {
+                $line = trim($line);
+                if (preg_match('/Participant\s+Name/i', $line)) {
+                    $afterParticipant = true;
+                    continue;
+                }
+                if ($afterParticipant && $line !== '' && !preg_match('/^(NABP|CPE|Total|Recorded|If it|Disclaimer|\d)/i', $line)
+                    && !preg_match('/^\d{1,2}\/\d{1,2}\/\d{4}/', $line)
+                    && preg_match('/^[A-Z][a-z]+(?:\s+[A-Z][a-z]+){1,3}$/', $line)) {
+                    $header['participant_name'] = $line;
+                    break;
+                }
+                if ($afterParticipant && preg_match('/\d{1,2}\/\d{1,2}\/\d{4}\s+\d/', $line)) {
+                    break;
+                }
+            }
+        }
+
         $allMatches = [];
         if (preg_match_all(
             '/Reported?\s+Generated\s*@\s*(.+?)(?:\s+Page\s+\d+\s+Of\s+\d+)?(?:\n|$)/i',
@@ -158,53 +185,54 @@ class CpePdfParser
     }
 
     // ---- Activity rows -------------------------------------------------------
+    // Works with any CPE transcript: find table body (after "Live Hours Home Hours")
+    // or use full text with footer/disclaimer stripped so all date-started rows are found.
 
     private function extractActivities(string $text): array
     {
         $activities = [];
-
-        /*
-         * Strategy:
-         *  1. Strip the header block and disclaimer block so we only parse the
-         *     table section.
-         *  2. Split remaining text into logical "activity" chunks that begin
-         *     with a date (M/D/YYYY or MM/DD/YYYY).
-         *  3. Parse each chunk into the nine columns.
-         */
-
-        // Remove everything up to (and including) the column header row
-        $bodyStart = preg_split(
-            '/Live\s+Hours\s+Home\s+Hours/i',
-            $text,
-            2
-        );
-        $bodyText  = isset($bodyStart[1]) ? $bodyStart[1] : $text;
-
-        // Remove footer noise: "Reported Generated @ …  Page N Of M"
-        $bodyText = preg_replace(
-            '/Reported?\s+Generated\s*@.*?Page\s+\d+\s+Of\s+\d+/is',
-            '',
-            $bodyText
-        );
-
-        // Remove disclaimer block (starts with "Disclaimer:")
-        $bodyText = preg_replace('/Disclaimer\s*:.*$/is', '', $bodyText);
-
-        // Split text into rows – each row starts with a date pattern
         $datePattern = '\d{1,2}\/\d{1,2}\/\d{4}';
 
-        // Find all positions where a date starts a new activity line
-        $parts = preg_split("/(?=\n\s*(?:$datePattern)\s)/", trim($bodyText));
+        // Strip footer and disclaimer everywhere
+        $clean = preg_replace('/Reported?\s+Generated\s*@.*?Page\s+\d+\s+Of\s+\d+/is', '', $text);
+        $clean = preg_replace('/Disclaimer\s*:.*$/is', '', $clean);
+        $clean = trim($clean);
+
+        // Prefer body after first "Live Hours Home Hours" (standard table header)
+        $bodyText = $clean;
+        if (preg_match('/Live\s+Hours\s+Home\s+Hours/i', $clean)) {
+            $split = preg_split('/Live\s+Hours\s+Home\s+Hours/i', $clean, 2);
+            if (isset($split[1])) {
+                $bodyText = trim($split[1]);
+            }
+        }
+
+        // Split into chunks: each starts at a new line that begins with a date
+        $parts = preg_split("/(?=\n\s*(?:$datePattern)[\s\t])/", $bodyText);
 
         foreach ($parts as $chunk) {
             $chunk = trim($chunk);
-            if (empty($chunk)) {
+            if ($chunk === '') {
                 continue;
             }
-
             $activity = $this->parseActivityChunk($chunk);
             if ($activity !== null) {
                 $activities[] = $activity;
+            }
+        }
+
+        // If no activities found, try full text (some PDFs put table before header block)
+        if (count($activities) === 0 && $bodyText !== $clean) {
+            $parts = preg_split("/(?=\n\s*(?:$datePattern)[\s\t])/", $clean);
+            foreach ($parts as $chunk) {
+                $chunk = trim($chunk);
+                if ($chunk === '') {
+                    continue;
+                }
+                $activity = $this->parseActivityChunk($chunk);
+                if ($activity !== null) {
+                    $activities[] = $activity;
+                }
             }
         }
 
@@ -241,7 +269,8 @@ class CpePdfParser
         $source         = $topMatch[3];
         $rest           = ltrim(substr($rest, strlen($topMatch[0])));
 
-        // Live Hours and Home Hours are always the last two numbers (allow integer or decimal)
+        // Live Hours and Home Hours are always the last two numbers (allow integer or decimal).
+        // Require at least one space between them so we don't split e.g. "30.75" into 30.7 and 5.
         if (!preg_match('/(\d+(?:\.\d+)?)\s+(\d+(?:\.\d+)?)\s*$/', $rest, $hoursMatch)) {
             return null;
         }
